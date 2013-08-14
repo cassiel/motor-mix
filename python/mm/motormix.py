@@ -9,9 +9,11 @@ Controller overview (transmitted):
                           11 is right minibuttons
 
         47 (0x2F)       - 0x40 to 0x4n is ON, 0x00 to 0x0n is OFF for
-                          switch inside block identified by "n"
+                          switch inside block identified by "n". 0x40
+                          and 0x00 themselves are touch on/touch off
+                          sensing from the faders
 
-        0+n (0x0n)      - fader 0..n MSB.
+        0+n (0x0n)      - fader 0..n MSB
         32+n (0x2n)     - fader 0..n LSB (two bits)
                           MSB first
 
@@ -23,7 +25,7 @@ Controller overview (received):
         12 (0x0C)       - selection of light block
 
         44 (0x2C)       - 0x40 to 0x4n is ON, 0x50 to 0x5n is BLINK,
-                          0x00 to 0x0n is OFF.
+                          0x00 to 0x0n is OFF
 '''
 
 from mm.manifest import *

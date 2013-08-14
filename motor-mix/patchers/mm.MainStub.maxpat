@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 63.0, 117.0, 758.0, 410.0 ],
+		"rect" : [ 45.0, 229.0, 758.0, 410.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 10.0,
@@ -358,8 +358,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 485.0, 120.0, 131.0, 14.0 ],
-					"text" : "run mm.MidiReWirePager"
+					"patching_rect" : [ 485.0, 120.0, 49.0, 14.0 ],
+					"text" : "run max"
 				}
 
 			}
