@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 98.0, 103.0, 758.0, 410.0 ],
+		"rect" : [ 63.0, 117.0, 758.0, 410.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 10.0,
@@ -29,6 +29,85 @@
 		"tags" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 1,
+					"fontname" : "Anonymous Pro",
+					"fontsize" : 10.0,
+					"id" : "obj-34",
+					"ignoreclick" : 1,
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 530.0, 245.0, 48.0, 16.0 ],
+					"triangle" : 0
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 1,
+					"fontname" : "Anonymous Pro",
+					"fontsize" : 10.0,
+					"id" : "obj-36",
+					"ignoreclick" : 1,
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 480.0, 245.0, 48.0, 16.0 ],
+					"triangle" : 0
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 1,
+					"fontname" : "Anonymous Pro",
+					"fontsize" : 10.0,
+					"format" : 4,
+					"id" : "obj-37",
+					"ignoreclick" : 1,
+					"maxclass" : "number",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 430.0, 245.0, 48.0, 16.0 ],
+					"triangle" : 0
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Courier",
+					"fontsize" : 10.0,
+					"id" : "obj-38",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "int", "int" ],
+					"patching_rect" : [ 430.0, 220.0, 83.0, 16.0 ],
+					"text" : "unpack 0 0 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Anonymous Pro",
+					"fontsize" : 10.0,
+					"id" : "obj-32",
+					"maxclass" : "newobj",
+					"numinlets" : 3,
+					"numoutlets" : 0,
+					"patching_rect" : [ 430.0, 315.0, 49.0, 16.0 ],
+					"text" : "noteout"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Anonymous Pro",
 					"fontsize" : 10.0,
 					"frgb" : 0.0,
@@ -37,7 +116,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 425.0, 305.0, 192.0, 66.0 ],
+					"patching_rect" : [ 505.0, 325.0, 192.0, 66.0 ],
 					"text" : "Out to destination. (In Max for Live, this will have to go to OSC, since Live will grab all in and out ports, which you will probably want to dedicate to the Motor Mix itself.)"
 				}
 
@@ -145,7 +224,7 @@
 					"fontname" : "Anonymous Pro",
 					"fontsize" : 10.0,
 					"id" : "obj-25",
-					"items" : [ "AU DLS Synth 1", ",", "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "828mk2 MIDI Port", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "828mk2 MIDI Port", ",", "LPK25", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "from Max 1", ",", "from Max 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -231,7 +310,7 @@
 					"fontname" : "Anonymous Pro",
 					"fontsize" : 10.0,
 					"id" : "obj-18",
-					"items" : [ "AU DLS Synth 1", ",", "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "828mk2 MIDI Port", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "from Max 1", ",", "from Max 2" ],
+					"items" : [ "AU DLS Synth 1", ",", "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "828mk2 MIDI Port", ",", "LPK25", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "from Max 1", ",", "from Max 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -246,7 +325,7 @@
 					"fontname" : "Anonymous Pro",
 					"fontsize" : 10.0,
 					"id" : "obj-17",
-					"items" : [ "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "828mk2 MIDI Port", ",", "828mk2 Sync Port", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "to Max 1", ",", "to Max 2" ],
+					"items" : [ "IAC Driver IAC_1", ",", "IAC Driver IAC_2", ",", "Network Session 1", ",", "828mk2 MIDI Port", ",", "828mk2 Sync Port", ",", "LPK25", ",", "MIDISPORT 2x2 Port A", ",", "MIDISPORT 2x2 Port B", ",", "to Max 1", ",", "to Max 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -296,7 +375,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 380.0, 255.0, 48.0, 16.0 ],
+					"patching_rect" : [ 365.0, 245.0, 48.0, 16.0 ],
 					"triangle" : 0
 				}
 
@@ -326,7 +405,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 330.0, 255.0, 48.0, 16.0 ],
+					"patching_rect" : [ 315.0, 245.0, 48.0, 16.0 ],
 					"triangle" : 0
 				}
 
@@ -343,7 +422,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 280.0, 255.0, 48.0, 16.0 ],
+					"patching_rect" : [ 265.0, 245.0, 48.0, 16.0 ],
 					"triangle" : 0
 				}
 
@@ -381,11 +460,11 @@
 					"fontsize" : 10.0,
 					"id" : "obj-8",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 210.0, 194.0, 131.0, 16.0 ],
-					"text" : "route mm.ctrl iac.ctrl"
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 210.0, 194.0, 180.0, 16.0 ],
+					"text" : "route mm.ctrl iac.ctrl iac.note"
 				}
 
 			}
@@ -426,8 +505,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 210.0, 170.0, 356.0, 16.0 ],
-					"text" : "mxj net.loadbang.jython.mxj.ScriptEngine @placeholder motormix"
+					"patching_rect" : [ 210.0, 170.0, 453.0, 16.0 ],
+					"text" : "mxj net.loadbang.jython.mxj.ScriptEngine @placeholder motormix @monothreaded true"
 				}
 
 			}
@@ -574,6 +653,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-23", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -664,6 +752,60 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-34", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-32", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-37", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-34", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-38", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-36", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-38", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -715,6 +857,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-8", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 2 ]
 				}
 
 			}
