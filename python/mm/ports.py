@@ -10,7 +10,7 @@ def print_port_list(L):
     L.sort()
 
     for p in L:
-        print("    {p}".format(p=p))
+        print(f"    {p}")
 
 def print_ports():
     print("INPUTS")

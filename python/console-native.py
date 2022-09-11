@@ -23,9 +23,9 @@ from_mm = mm_ports.find_input_port_matching(args.from_mm)
 to_mm = mm_ports.find_output_port_matching(args.to_mm)
 output = mm_ports.find_output_port_matching(args.output)
 
-print("FROM MM: {p}".format(p=from_mm))
-print("  TO MM: {p}".format(p=to_mm))
-print(" OUTPUT: {p}".format(p=output))
+print(f"FROM MM: {from_mm}")
+print(f"  TO MM: {to_mm}")
+print(f" OUTPUT: {output}")
 
 if from_mm and to_mm and output:
     print("OK")
