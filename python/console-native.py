@@ -4,11 +4,13 @@ Python 3-native.
 """
 
 import mido
+import mm.ports as mm_ports
+from mm.motormix import Outputter
+from mm.pager import driver
+
 import time
 import argparse
 import re
-
-import mm.ports as mm_ports
 
 mm_ports.print_ports()
 
@@ -27,7 +29,51 @@ print(f"FROM MM: {from_mm}")
 print(f"  TO MM: {to_mm}")
 print(f" OUTPUT: {output}")
 
+# Some naming confusion: iac means "output" as above, to other application.
+
+class MMOutputter(Outputter):
+    def __init__(self, port):
+        Outputter.__init__(self)
+        self.__port = port
+
+    def doCtrlOut(self, ctrl, val):
+        #self.__out.sendController(0, ctrl, val)
+        self.__port.send(mido.Message('control_change', control=ctrl, value=val))
+
+class IACOutputter(Outputter):
+    def __init__(self, port):
+        Outputter.__init__(self)
+        self.__port = port
+
+    def doCtrlOut(self, ctrl, val, chan):
+        #self.__out.sendController(chan - 1, ctrl, val)
+        self.__port.send(mido.Message('control_change', channel=chan, control=ctrl, value=val))
+
+    def doNoteOut(self, pitch, vel, chan):
+        if vel > 0:
+            self.__out.sendNoteOn(chan - 1, pitch, vel)
+        else:
+            self.__out.sendNoteOff(chan - 1, pitch, 0)
+
+def process_msg(driver, msg):
+    print(msg)
+
+    if msg.type == "control_change":
+        driver.ctrlIn(msg.control, msg.value)
+
+def process():
+    with mido.open_output(to_mm) as to_mm_port:
+        with mido.open_output(output) as output_port:
+            mm_outputter = MMOutputter(to_mm_port)
+            iac_outputter = IACOutputter(output_port)
+            d = driver(mm_outputter, iac_outputter)
+
+            with mido.open_input(from_mm, callback=lambda msg: process_msg(d, msg)):
+                while True:
+                    print(time.asctime(time.localtime(time.time())))
+                    time.sleep(5)
+
 if from_mm and to_mm and output:
-    print("OK")
+    process()
 else:
     raise Exception("Not all ports identified")
