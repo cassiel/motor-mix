@@ -1,0 +1,11 @@
+-*- mode: org; mode: visual-line; -*-
+#+STARTUP: indent
+
+* Motor-Mix in Python
+
+Note: Max/Java/Jython version (saved under branch =max-version=) is vestigial - the current development branch is Python 3 native and console-based.
+
+** Libraries
+
+- =mido=
+- =python-rtmidi= (not =rtmidi=)
