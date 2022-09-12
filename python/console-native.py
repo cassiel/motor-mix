@@ -11,6 +11,7 @@ from mm.pager import driver
 import time
 import argparse
 import re
+import logging
 
 mm_ports.print_ports()
 
@@ -25,9 +26,9 @@ from_mm = mm_ports.find_input_port_matching(args.from_mm)
 to_mm = mm_ports.find_output_port_matching(args.to_mm)
 output = mm_ports.find_output_port_matching(args.output)
 
-print(f"FROM MM: {from_mm}")
-print(f"  TO MM: {to_mm}")
-print(f" OUTPUT: {output}")
+logging.info(f"FROM MM: {from_mm}")
+logging.info(f"  TO MM: {to_mm}")
+logging.info(f" OUTPUT: {output}")
 
 # Some naming confusion: iac means "output" as above, to other application.
 
@@ -47,16 +48,18 @@ class IACOutputter(Outputter):
 
     def doCtrlOut(self, ctrl, val, chan):
         #self.__out.sendController(chan - 1, ctrl, val)
-        self.__port.send(mido.Message('control_change', channel=chan, control=ctrl, value=val))
+        self.__port.send(mido.Message('control_change', channel=chan - 1, control=ctrl, value=val))
 
     def doNoteOut(self, pitch, vel, chan):
         if vel > 0:
-            self.__out.sendNoteOn(chan - 1, pitch, vel)
+            #self.__out.sendNoteOn(chan - 1, pitch, vel)
+            self.__port.send(mido.Message('note_on', channel=chan - 1, note=pitch, velocity=64))
         else:
-            self.__out.sendNoteOff(chan - 1, pitch, 0)
+            #self.__out.sendNoteOff(chan - 1, pitch, 0)
+            self.__port.send(mido.Message('note_off', channel=chan - 1, note=pitch))
 
 def process_msg(driver, msg):
-    print(msg)
+    logging.info(msg)
 
     if msg.type == "control_change":
         driver.ctrlIn(msg.control, msg.value)
@@ -70,7 +73,7 @@ def process():
 
             with mido.open_input(from_mm, callback=lambda msg: process_msg(d, msg)):
                 while True:
-                    print(time.asctime(time.localtime(time.time())))
+                    logging.info(time.asctime(time.localtime(time.time())))
                     time.sleep(5)
 
 if from_mm and to_mm and output:

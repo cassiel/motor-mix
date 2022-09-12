@@ -30,6 +30,7 @@ Controller overview (received):
 
 from mm.manifest import *
 import sys
+import logging
 
 # "Button" 0 is the touch setting for the fader; then from top
 # to bottom, 1, 4, 5, 3, 2.
@@ -153,7 +154,7 @@ class MotorMixDriver:
             if val >= 0 and val < NUM_STRIPS:
                 self.__currStripIndex = val
             else:
-                print >> sys.stderr, "channel strip number out of range: %d" % val
+                logging.warning("channel strip number out of range: %d" % val)
         elif ctrl == IN_SWITCH_CTRL:
             strip = self.__strips[self.__currStripIndex]
 
@@ -166,7 +167,7 @@ class MotorMixDriver:
             elif val > OFF_BASE and val < OFF_BASE + NUM_STRIPLEDS + 1:
                 strip.doPress(BUTTONVALTOROW[val - OFF_BASE], False)
             else:
-                print >> sys.stderr, "channel LED index out of range: %d" % val
+                logging.warning("channel LED index out of range: %d" % val)
         elif ctrl >= FADER_MSB_BASE_CTRL and ctrl < FADER_MSB_BASE_CTRL + NUM_STRIPS:
             strip = self.__strips[ctrl - FADER_MSB_BASE_CTRL]
             strip.doFader(val)
