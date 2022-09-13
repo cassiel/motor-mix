@@ -13,7 +13,7 @@ import argparse
 import re
 import logging
 
-logging.basicConfig(format='%(asctime)s %(message)s',
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     level=logging.INFO)
 
 mm_ports.print_ports()
@@ -62,10 +62,11 @@ class IACOutputter(Outputter):
             self.__port.send(mido.Message('note_off', channel=chan - 1, note=pitch))
 
 def process_msg(driver, msg):
-    logging.info(msg)
+    logging.info(f"{msg.hex()}: {msg}")
 
     if msg.type == "control_change":
-        driver.ctrlIn(msg.control, msg.value)
+        pass
+        #driver.ctrlIn(msg.control, msg.value)
 
 def process():
     with mido.open_output(to_mm) as to_mm_port:
