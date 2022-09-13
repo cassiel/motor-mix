@@ -65,8 +65,7 @@ def process_msg(driver, msg):
     logging.info(f"{msg.hex()}: {msg}")
 
     if msg.type == "control_change":
-        pass
-        #driver.ctrlIn(msg.control, msg.value)
+        driver.ctrlIn(msg.control, msg.value)
 
 def process():
     with mido.open_output(to_mm) as to_mm_port:
