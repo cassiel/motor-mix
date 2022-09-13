@@ -4,18 +4,19 @@ Port handling.
 
 import mido
 import re
+import logging
 
 def print_port_list(L):
     L = list(set(L))
     L.sort()
 
     for p in L:
-        print(f"    {p}")
+        logging.info(f"    {p}")
 
 def print_ports():
-    print("INPUTS")
+    logging.info("INPUTS")
     print_port_list(mido.get_input_names())
-    print("OUTPUTS")
+    logging.info("OUTPUTS")
     print_port_list(mido.get_output_names())
 
 def find_port_from_patt(ports, patt):

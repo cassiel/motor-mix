@@ -13,6 +13,9 @@ import argparse
 import re
 import logging
 
+logging.basicConfig(format='%(asctime)s %(message)s',
+                    level=logging.INFO)
+
 mm_ports.print_ports()
 
 ap = argparse.ArgumentParser()
@@ -73,7 +76,7 @@ def process():
 
             with mido.open_input(from_mm, callback=lambda msg: process_msg(d, msg)):
                 while True:
-                    logging.info(time.asctime(time.localtime(time.time())))
+                    logging.info("TICK")
                     time.sleep(5)
 
 if from_mm and to_mm and output:
