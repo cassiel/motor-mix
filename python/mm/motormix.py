@@ -150,7 +150,8 @@ class MotorMixDriver:
         return self.__strips[i]
 
     def ctrlIn(self, ctrl, val):
-        if ctrl == IN_BLOCKSELECT_CTRL:
+        if ctrl == IN_BLOCKSELECT_CTRL:         # Select block of switches. 0-7 is across channels,
+                                                # 8 is left side, 9 is right side etc.
             if val >= 0 and val < NUM_STRIPS:
                 self.__currStripIndex = val
             else:
@@ -158,9 +159,10 @@ class MotorMixDriver:
         elif ctrl == IN_SWITCH_CTRL:
             strip = self.__strips[self.__currStripIndex]
 
-            if val == ON_BASE:
+            if val == ON_BASE:                  # ON_BASE (40) is touch event.
                 strip.doTouch(True)
             elif val > ON_BASE and val < ON_BASE + NUM_STRIPLEDS + 1:
+                                                # Select row or batch of switches.
                 strip.doPress(BUTTONVALTOROW[val - ON_BASE], True)
             elif val == OFF_BASE:
                 strip.doTouch(False)
@@ -172,7 +174,7 @@ class MotorMixDriver:
             strip = self.__strips[ctrl - FADER_MSB_BASE_CTRL]
             strip.doFader(val)
         elif ctrl >= FADER_LSB_BASE_CTRL and ctrl < FADER_LSB_BASE_CTRL + NUM_STRIPS:
-            pass
+            logging.warning("ignoring LSB in fader messages")
 
 if __name__ == "__main__":
     # PYTHONPATH=.. python <...>

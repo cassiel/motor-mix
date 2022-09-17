@@ -4,17 +4,17 @@ Python 3-native.
 """
 
 import mido
-import mm.ports as mm_ports
-from mm.motormix import Outputter
-from mm.pager import driver
-
 import time
 import argparse
 import re
 import logging
 
+import mm.ports as mm_ports
+from mm.motormix import Outputter
+from mm.pager import driver
+
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
-                    level=logging.INFO)
+                    level=logging.ERROR)
 
 mm_ports.print_ports()
 
