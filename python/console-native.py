@@ -8,10 +8,12 @@ import time
 import argparse
 import re
 import logging
+import curses
 
 import mm.ports as mm_ports
 from mm.motormix import Outputter
 from mm.pager import driver
+from screen import Screen
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     level=logging.ERROR)
@@ -78,7 +80,7 @@ def test_sysex(port):
     # Final 0xF7 is implicit.
     port.send(msg)
 
-def process():
+def process(screen, stdscr):
     with mido.open_output(to_mm) as to_mm_port:
         with mido.open_output(output) as output_port:
             mm_outputter = MMOutputter(to_mm_port)
@@ -88,11 +90,20 @@ def process():
             test_sysex(to_mm_port)
 
             with mido.open_input(from_mm, callback=lambda msg: process_msg(d, msg)):
+                i = 0
                 while True:
-                    logging.info("TICK")
-                    time.sleep(5)
+                    screen.addstr(0, 0, f"i = {i}")
+                    screen.refresh()
+                    i += 1
+                    c = stdscr.getch()
+                    if c == ord('q'): break
 
-if from_mm and to_mm and output:
-    process()
-else:
-    raise Exception("Not all ports identified")
+def main(stdscr):
+    screen = Screen(stdscr)
+
+    if from_mm and to_mm and output:
+        process(screen, stdscr)
+    else:
+        raise Exception("Not all ports identified")
+
+curses.wrapper(main)
