@@ -71,8 +71,10 @@ def test_sysex(port):
     # LCD display (initial 0xF0 is implicit):
     msg = mido.Message('sysex', data=[0x00, 0x01, 0x0F, 0x00, 0x11, 0x00])
     msg.data += [0x10]          # Text display (vs. rotary graphics).
-    msg.data += [0x00]          # Address, column by column.
-    msg.data += [ord(c) for c in "Project Cassiel"]
+    msg.data += [0x00]          # Address, column by column, 0..79.
+    #msg.data += [ord(c) for c in "Project Cassiel"]
+    #msg.data += [ord('X') for _ in range(80)]
+    msg.data += [i for i in range(32)]
     # Final 0xF7 is implicit.
     port.send(msg)
 
@@ -83,7 +85,7 @@ def process():
             iac_outputter = IACOutputter(output_port)
             d = driver(mm_outputter, iac_outputter)
 
-            #test_sysex(to_mm_port)
+            test_sysex(to_mm_port)
 
             with mido.open_input(from_mm, callback=lambda msg: process_msg(d, msg)):
                 while True:
