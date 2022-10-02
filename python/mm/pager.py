@@ -25,7 +25,8 @@ class MyStripDriver(StripDriver):
         chan = idx + 1
         # Standard MIDI velocities of 64 and 0:
         vel = how * 64
-        self.__iacOutputter.doNoteOut(pitch, vel, chan)
+        ### TODO: send notes to different virtual device (Bitwig can't distinguish controller types)
+        ###self.__iacOutputter.doNoteOut(pitch, vel, chan)
 
     def doTouch(self, how):
         # Cosmetic: flash all but the top LED when fader is touched:
