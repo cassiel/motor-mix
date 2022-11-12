@@ -13,7 +13,7 @@ import curses
 import mm.ports as mm_ports
 from mm.motormix import Outputter
 from mm.pager import driver
-from screen import Screen
+from screen import BaseScreen
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     level=logging.ERROR)
@@ -99,7 +99,7 @@ def process(screen, stdscr):
                     if c == ord('q'): break
 
 def main(stdscr):
-    screen = Screen(stdscr)
+    screen = BaseScreen(stdscr)
 
     if from_mm and to_mm and output:
         process(screen, stdscr)

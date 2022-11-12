@@ -1,11 +1,11 @@
 """
-Screen driving via curses. Separated here so we can add a queue for thread-safety.
+Basic curses screen driving. Separated here so we can add a queue for thread-safety.
 """
 
 import curses
 import threading
 
-class Screen:
+class BaseScreen:
     def __init__(self, stdscr):
         self.__stdscr = stdscr
         self.__mutex = threading.Lock()
